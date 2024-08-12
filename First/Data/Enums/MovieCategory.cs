@@ -4,7 +4,10 @@
     {
         Action =1,
         Comedy,
-        Drama
+        Drama,
+        Horror,
+        Documentary,
+        Cartoon
     }
     public class Samee {
 

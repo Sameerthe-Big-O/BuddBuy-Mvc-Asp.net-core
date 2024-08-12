@@ -10,13 +10,17 @@ namespace First.Data
     public class AppDbContext:DbContext
     {
 
+        //calling the constructor
        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
-        {
 
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            //setting up the many to many relationship
             modelBuilder.Entity<Movie_Actors>().HasKey(am => new {
                am.ActorId,
                am.MovieId
