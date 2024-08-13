@@ -20,6 +20,7 @@
     },
     "https": {
       "commandName": "Project",
+      "launchUrl": "Movies",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7047;http://localhost:5156",
@@ -30,6 +31,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "Movies",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

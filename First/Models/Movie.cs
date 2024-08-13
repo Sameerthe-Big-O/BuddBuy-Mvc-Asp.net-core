@@ -32,8 +32,8 @@ namespace First.Models
         public int CenimaId { get; set; }
         [ForeignKey("CenimaId")]
 
-        //*here we're actually storing the id because we usually store the on the many side 
-        public Cenima Cinema { get; set; }
+        //*here we're actually storing the id because we usually store the on the many side, later Movie can fetch the Cenima 
+        public Cenima Cenima { get; set; }
 
         //what this is saying is that it can have single Producer id for each tuple
         public int ProducerId  { get; set; }

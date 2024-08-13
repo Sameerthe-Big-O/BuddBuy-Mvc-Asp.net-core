@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "List of Movies";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card border-light shadow-sm">
+                    <img src="@item.PictureUrl" class="card-img-top" alt="@item.Title">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between align-items-center">
+                            @item.Title
+                            <a href="#" class="text-info"><i class="bi bi-pencil-square"></i></a>
+                        </h5>
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text"><strong>Cinema:</strong> @item.Cenima.Name</p>
+                        <p class="card-text"><strong>Category:</strong> @item.MovieCategory</p>
+                        <p class="card-text"><strong>Start Date:</strong> @item.StartDate.ToString("dd MMM yyyy")</p>
+                        <p class="card-text"><strong>End Date:</strong> @item.EndDate.ToString("dd MMM yyyy")</p>
+                        <p class="card-text">
+                            <strong>Status:</strong>
+                            @if (DateTime.Now <= item.EndDate)
+                            {
+                                <span class="badge bg-success">AVAILABLE</span>
+                            }
+                            else if (DateTime.Now > item.EndDate)
+                            {
+                                <span class="badge bg-danger">EXPIRED</span>
+                            }
+                            else if (DateTime.Now >= item.StartDate)
+                            {
+                                <span class="badge bg-primary">UPCOMING</span>
+                            }
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <a href="#" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Show Details</a>
+                        <a href="#" class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

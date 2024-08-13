@@ -20,4 +20,11 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\NewFolder\" />
+    <Folder Include="Views\NewFolder1\" />
+    <Folder Include="Views\NewFolder2\" />
+    <Folder Include="Views\NewFolder\NewFolder\" />
+  </ItemGroup>
+
 </Project>

@@ -14,6 +14,7 @@ namespace First.Data
        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
 
         {
+            //*allowing the legacy behaviour for dateTime
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 

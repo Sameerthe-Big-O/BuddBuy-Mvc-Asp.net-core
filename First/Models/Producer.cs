@@ -9,8 +9,9 @@ namespace First.Models
 
         public string ProfileUrl { get; set; }
 
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
-
+        [Display(Name = "Biography")]
         public string Bio { get; set; }
 
         //relationships this is we define the one to many relationships

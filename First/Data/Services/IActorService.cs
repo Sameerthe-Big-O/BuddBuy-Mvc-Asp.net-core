@@ -3,17 +3,18 @@
 namespace First.Data.Services
 {
 
-    //*just define the methods, basically a method data
+    //*just define the methods, basically a meta data
     public interface IActorService
     {
-        IEnumerable<Actor> GetALL();
+        //*task here telling that it shouldn't block the main  thread , 
+        Task<IEnumerable<Actor>> GetALL();
 
-        Actor GetById(int id);
+        Task<Actor> GetByIdAsync(int id);
 
-        Actor UpdateById(int id);
+        Task<Actor> UpdateByIdAsync(int id, Actor actor);
 
         void DeleteById(int id);
 
-        void Add(Actor actor);
+        void AddAsync(Actor actor);
     }
 }
