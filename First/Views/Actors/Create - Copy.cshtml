@@ -53,12 +53,9 @@ if that that specific fields has the error then simply we'll just that error
 *@
 @section Scripts {
     <script>
-        $(doument).ready(function () {
-            $("#ProfileUrl").on("change", function () {
-                var output = document.getElementById('ProfilePicturePreview');
-                output.src = $(this).val();
-            })
-        });
-        
+        $("#ProfileUrl").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $(this).val();
+        })
     </script>
 }

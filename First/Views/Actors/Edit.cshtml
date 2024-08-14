@@ -1,0 +1,87 @@
+@model Actor
+
+@{
+    ViewData["Title"] = "Update Actor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Update Actor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form id="updateActorForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProfileUrl" class="control-label"></label>
+                        <input asp-for="ProfileUrl" class="form-control" id="ProfileUrl" />
+                        <span asp-validation-for="ProfileUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" id="FullName" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Bio" class="control-label"></label>
+                        <input asp-for="Bio" class="form-control" id="Bio" />
+                        <span asp-validation-for="Bio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Display the profile picture
+            $('#ProfilePicturePreview').attr('src', $('#ProfileUrl').val());
+
+            // Handle form submission via AJAX
+            $('#updateActorForm').on('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Gather form data
+                var formData = {
+                    //*to get the values form teb form i used the # ti getthe value
+                    Id: '@Model.Id',
+                    FullName: $('#FullName').val(),
+                    ProfileUrl: $('#ProfileUrl').val(),
+                    Bio: $('#Bio').val()
+                };
+                z
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    //*remember that what it's saying is that i'll go to the controller Actor and then will hit the Update action there
+                    url: '@Url.Action("Update", "Actors")', // Update this URL if necessary
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = '@Url.Action("Index", "Actors")';
+                        } else {
+                            // Handle errors if any
+                            alert('An error occurred: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle AJAX errors
+                        alert('An error occurred: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+}

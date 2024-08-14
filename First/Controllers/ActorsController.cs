@@ -71,7 +71,6 @@ namespace First.Controllers
         }
 
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Details(int id)
         {
             var result= await _service.GetByIdAsync(id);
@@ -85,19 +84,12 @@ namespace First.Controllers
 
         //*first fetch that shit
 
-        [HttpGet]
-        public async Task<IActionResult> Edit()
-        {
-
-            Console.WriteLine("hello here im ");
-            return View();
-        }
-
-        [HttpGet]
+        //*iuf we have two method and not mention which one is which then it might collapse
+        
         public async Task<IActionResult> Edit(int id)
         {
             var result = await _service.GetByIdAsync(id);
-
+            Console.WriteLine(result);
             if (result == null)
             {
                 return NotFound();
@@ -107,10 +99,10 @@ namespace First.Controllers
 
         // POST: Actors/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         //*method overloading here ploymoi-hism
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfileUrl,Bio")] Actor actor)
+        public async Task<IActionResult> Update(int id, [Bind("Id,FullName,ProfileUrl,Bio")] Actor actor)
         {
+
             if (id != actor.Id)
             {
                 return BadRequest("Id is  Required"); // Return a 400 Bad Request response if the ID mismatch occurs
@@ -134,5 +126,18 @@ namespace First.Controllers
             }
         }
 
+        [HttpDelete]
+        public async void Delete(int id)
+        {
+            try
+            {
+                 _service.DeleteById(id);
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
     }
 }

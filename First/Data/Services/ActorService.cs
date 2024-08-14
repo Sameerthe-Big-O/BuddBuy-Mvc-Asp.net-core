@@ -91,10 +91,12 @@ namespace First.Data.Services
 
         public async Task<Actor> UpdateByIdAsync(int id, Actor actor)
         {
+            Console.WriteLine(actor);
             try
             {
                 var result = await _context.Actors.FindAsync(id);
 
+                Console.WriteLine(result);
                 if (result == null)
                 {
 

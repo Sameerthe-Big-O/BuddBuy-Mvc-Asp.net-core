@@ -27,4 +27,11 @@
     <Folder Include="Views\NewFolder\NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Actors\Create - Copy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
